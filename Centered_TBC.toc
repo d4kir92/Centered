@@ -6,6 +6,8 @@
 ## DefaultState: enabled
 ## SavedVariables: D4CEN
 ## SavedVariablesPerCharacter: D4CENPC
+## X-Curse-Project-ID: 386754
+## X-Wago-ID: 25NRrvN3
 
 config.lua
 
