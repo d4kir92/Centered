@@ -15,7 +15,7 @@ end
 
 local function InitSettings()
 	D4CENTAB_Settings = {}
-	local settingname = D4CENTAB.colorauthor .. D4CENTAB.author .. " " .. D4CENTAB.colorname .. D4CENTAB.name
+	local settingname = D4CENTAB.name
 	D4CENTAB_Settings.panel = CreateFrame("Frame", settingname, UIParent)
 	D4CENTAB_Settings.panel.name = settingname
 

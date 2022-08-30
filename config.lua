@@ -3,10 +3,7 @@
 if D4CENTAB == nil then
 	D4CENTAB = {}
 end
-D4CENTAB.name = "Centered UnitFrames"
-D4CENTAB.colorname = "|c008888ff"
-D4CENTAB.author = "D4KiR"
-D4CENTAB.colorauthor = "|c0000ffff"
+D4CENTAB.name = "Centered |T132222/:16:16:0:0|t by |cFFAAAAFFD4KiR |T132115/:16:16:0:0|t"
 
 SetCVar("ScriptErrors", 1)
 

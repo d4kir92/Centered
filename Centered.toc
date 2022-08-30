@@ -1,6 +1,6 @@
 ## Interface: 90207
 ## Version: 1.0.0
-## Title: CenteredUnitFrames |T132222/:16:16:0:0|t by |cFFAAAAFFD4KiR |T132115/:16:16:0:0|t 
+## Title: Centered |T132222/:16:16:0:0|t by |cFFAAAAFFD4KiR |T132115/:16:16:0:0|t 
 ## Notes: Centers Some Elements
 ## Author: D4KiR
 ## DefaultState: enabled
