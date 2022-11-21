@@ -5,8 +5,6 @@ if D4CENTAB == nil then
 end
 D4CENTAB.name = "Centered |T132222:16:16:0:0|t by |cff3FC7EBD4KiR |T132115:16:16:0:0|t"
 
-SetCVar("ScriptErrors", 1)
-
 function D4CENGetConfig(str, val)
 	local setting = val
 

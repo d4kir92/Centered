@@ -70,6 +70,7 @@ end
 
 D4CENTABloaded = false
 
+SetCVar( "ScriptErrors", 1 )
 local vars = false
 local addo = false
 local frame = CreateFrame("FRAME")
@@ -85,7 +86,7 @@ function frame:OnEvent(event)
 	end
 	if vars and addo and not D4CENTABloaded then
 		D4CENTABloaded = true
-
+		SetCVar( "ScriptErrors", 1 )
 		InitSettings()
 	end
 end
