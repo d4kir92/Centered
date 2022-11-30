@@ -70,7 +70,6 @@ end
 
 D4CENTABloaded = false
 
-SetCVar( "ScriptErrors", 1 )
 local vars = false
 local addo = false
 local frame = CreateFrame("FRAME")
