@@ -1,6 +1,6 @@
 -- By D4KiR
-
 CENBUILD = "CLASSIC"
+
 if select(4, GetBuildInfo()) >= 100000 then
 	CENBUILD = "RETAIL"
 elseif select(4, GetBuildInfo()) > 29999 then
@@ -18,11 +18,9 @@ local function InitSettings()
 	local settingname = D4CENTAB.name
 	D4CENTAB_Settings.panel = CreateFrame("Frame", settingname, UIParent)
 	D4CENTAB_Settings.panel.name = settingname
-
 	local Y = -14
 	local H = 16
 	local BR = 30
-
 	local settings_header = {}
 	settings_header.frame = D4CENTAB_Settings.panel
 	settings_header.parent = D4CENTAB_Settings.panel
@@ -32,7 +30,6 @@ local function InitSettings()
 	settings_header.textsize = 24
 	D4CENTABCreateText(settings_header)
 	Y = Y - BR
-
 	Y = Y - BR
 	local settings_playergap = {}
 	settings_playergap.name = "playergap"
@@ -48,7 +45,6 @@ local function InitSettings()
 	settings_playergap.dbvalue = "playergap"
 	D4CENTABCreateSlider(settings_playergap)
 	Y = Y - H
-
 	Y = Y - BR
 	local settings_playerheight = {}
 	settings_playerheight.name = "playerheight"
@@ -64,29 +60,31 @@ local function InitSettings()
 	settings_playerheight.dbvalue = "playerheight"
 	D4CENTABCreateSlider(settings_playerheight)
 	Y = Y - H
-
 	InterfaceOptions_AddCategory(D4CENTAB_Settings.panel)
 end
 
 D4CENTABloaded = false
-
 local vars = false
 local addo = false
 local frame = CreateFrame("FRAME")
 frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("VARIABLES_LOADED")
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+
 function frame:OnEvent(event)
 	if event == "VARIABLES_LOADED" then
 		vars = true
 	end
+
 	if event == "ADDON_LOADED" then
 		addo = true
 	end
+
 	if vars and addo and not D4CENTABloaded then
 		D4CENTABloaded = true
-		SetCVar( "ScriptErrors", 1 )
+		SetCVar("ScriptErrors", 1)
 		InitSettings()
 	end
 end
+
 frame:SetScript("OnEvent", frame.OnEvent)
