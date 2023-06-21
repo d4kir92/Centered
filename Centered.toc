@@ -1,9 +1,9 @@
 ## Interface-Classic: 11403
 ## Interface-BCC: 20504
-## Interface-Wrath: 30401
+## Interface-Wrath: 30402
 ## Interface: 100100
 
-## Version: 1.0.16
+## Version: 1.0.17
 ## Title: Centered by |cff3FC7EBD4KiR |T132115:16:16:0:0|t 
 ## Notes: Centers Some Elements
 ## Author: D4KiR
