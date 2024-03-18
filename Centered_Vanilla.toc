@@ -1,5 +1,5 @@
 ## Interface: 11501
-## Version: 1.0.25
+## Version: 1.0.26
 ## Title: Centered |T132222:16:16:0:0|t by |cff3FC7EBD4KiR |T132115:16:16:0:0|t 
 ## Notes: Centers Some Elements
 ## Author: D4KiR
@@ -11,15 +11,15 @@
 
 config.lua
 
-libs/LIB_output.lua
-libs/LIB_math.lua
-libs/LIB_design.lua
+libs\LIB_output.lua
+libs\LIB_math.lua
+libs\LIB_design.lua
 
-locale/enUS.lua
-locale/deDE.lua
-locale/frFR.lua
-locale/ruRU.lua
-libs/LIB_lang.lua
+locale\enUS.lua
+locale\deDE.lua
+locale\frFR.lua
+locale\ruRU.lua
+libs\LIB_lang.lua
 
 settings.lua
 
