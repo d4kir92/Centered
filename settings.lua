@@ -1,14 +1,4 @@
 -- By D4KiR
-CENBUILD = "CLASSIC"
-
-if select(4, GetBuildInfo()) >= 100000 then
-	CENBUILD = "RETAIL"
-elseif select(4, GetBuildInfo()) > 29999 then
-	CENBUILD = "WRATH"
-elseif select(4, GetBuildInfo()) > 19999 then
-	CENBUILD = "TBC"
-end
-
 if D4CENTAB == nil then
 	D4CENTAB = {}
 end
@@ -63,14 +53,13 @@ local function InitSettings()
 	InterfaceOptions_AddCategory(D4CENTAB_Settings.panel)
 end
 
-D4CENTABloaded = false
+local D4CENTABloaded = false
 local vars = false
 local addo = false
 local frame = CreateFrame("FRAME")
 frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("VARIABLES_LOADED")
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
-
 function frame:OnEvent(event)
 	if event == "VARIABLES_LOADED" then
 		vars = true
