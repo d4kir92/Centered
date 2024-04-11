@@ -1,11 +1,10 @@
+local _, Centered = ...
 -- LIB Design
-
 if D4CENTAB == nil then
 	D4CENTAB = {}
 end
 
 lang = lang or {}
-
 function D4CENTABGT(str, tab)
 	local strid = string.lower(str)
 	local result = lang[strid]
@@ -19,6 +18,7 @@ function D4CENTABGT(str, tab)
 				end
 			end
 		end
+
 		return result
 	else
 		return str
@@ -39,4 +39,5 @@ function D4CENTABUpdateLanguage()
 		D4CENTAB.Lang_ruRU()
 	end
 end
+
 D4CENTABUpdateLanguage()

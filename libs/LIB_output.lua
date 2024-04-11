@@ -1,10 +1,10 @@
+local _, Centered = ...
 -- LIB Output
-
 if D4CENTAB == nil then
 	D4CENTAB = {}
 end
-D4CENTAB.name = D4CENTAB.name or "X"
 
+D4CENTAB.name = D4CENTAB.name or "X"
 function D4CENTABmsg(str)
 	print("|c0000ffff" .. "[" .. "|cff8888ff" .. D4CENTAB.name .. "|c0000ffff" .. "] " .. str)
 end
@@ -24,5 +24,6 @@ function pTab(tab)
 			print(i, v)
 		end
 	end
+
 	print("----------------------------------")
 end

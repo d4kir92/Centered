@@ -1,5 +1,5 @@
+local _, Centered = ...
 -- LIB Design
-
 if D4CENTAB == nil then
 	D4CENTAB = {}
 end
@@ -18,10 +18,12 @@ function D4CENTABCreateText(tab)
 	text:SetFont(STANDARD_TEXT_FONT, tab.textsize, "OUTLINE")
 	text:SetPoint("TOPLEFT", tab.parent, "TOPLEFT", tab.x, tab.y)
 	text:SetText(D4CENTABGT(tab.text))
-
-	hooksecurefunc("D4CENTABUpdateLanguage", function()
-		text:SetText(D4CENTABGT(tab.text))
-	end)
+	hooksecurefunc(
+		"D4CENTABUpdateLanguage",
+		function()
+			text:SetText(D4CENTABGT(tab.text))
+		end
+	)
 
 	return text
 end
@@ -36,16 +38,19 @@ function D4CENTABCreateCheckBox(tab)
 	CB:SetPoint("TOPLEFT", tab.x, tab.y)
 	CB.tooltip = tab.tooltip
 	CB:SetChecked(tab.checked)
-	CB:SetScript("OnClick", function(self)
-		local status = CB:GetChecked()
-		self:SetChecked(status)
-		D4CEN[tab.dbvalue] = status
-		if tab.func ~= nil then
-			tab:func()
-		elseif SetupD4CEN ~= nil then
-			SetupD4CEN()
+	CB:SetScript(
+		"OnClick",
+		function(self)
+			local status = CB:GetChecked()
+			self:SetChecked(status)
+			D4CEN[tab.dbvalue] = status
+			if tab.func ~= nil then
+				tab:func()
+			elseif Centered.Update ~= nil then
+				Centered:Update()
+			end
 		end
-	end)
+	)
 
 	tab.frame = CB
 	tab.x = tab.x + 26
@@ -75,26 +80,32 @@ function D4CENTABCreateSlider(tab)
 	tab.steps = tab.steps or 1
 	SL:SetValueStep(tab.steps)
 	SL.decimals = tab.decimals or 1
-	SL:SetScript("OnValueChanged", function(self, val)
-		val = mathR(val, self.decimals)
-		val = val - val % tab.steps
-		val = mathR(val, self.decimals)
-		D4CEN[tab.dbvalue] = val
-		trans = {}
-		trans["VALUE"] = val
-		SL.Text:SetText(D4CENTABGT(tab.text, trans))
-		if tab.func ~= nil then
-			tab:func()
-		elseif SetupD4CEN ~= nil then
-			SetupD4CEN()
+	SL:SetScript(
+		"OnValueChanged",
+		function(self, val)
+			val = mathR(val, self.decimals)
+			val = val - val % tab.steps
+			val = mathR(val, self.decimals)
+			D4CEN[tab.dbvalue] = val
+			trans = {}
+			trans["VALUE"] = val
+			SL.Text:SetText(D4CENTABGT(tab.text, trans))
+			if tab.func ~= nil then
+				tab:func()
+			elseif Centered.Update ~= nil then
+				Centered:Update()
+			end
 		end
-	end)
+	)
 
-	hooksecurefunc("D4CENTABUpdateLanguage", function()
-		trans = {}
-		trans["VALUE"] = SL:GetValue()
-		SL.Text:SetText(D4CENTABGT(tab.text, trans))
-	end)
+	hooksecurefunc(
+		"D4CENTABUpdateLanguage",
+		function()
+			trans = {}
+			trans["VALUE"] = SL:GetValue()
+			SL.Text:SetText(D4CENTABGT(tab.text, trans))
+		end
+	)
 
 	return EB
 end
@@ -109,7 +120,7 @@ function D4CENTABCTexture(frame, tab)
 		tab.color.g = tab.color.g or 1
 		tab.color.b = tab.color.b or 1
 		tab.color.a = tab.color.a or 1
-	 	texture:SetTexture(tab.texture)
+		texture:SetTexture(tab.texture)
 		texture:SetVertexColor(tab.color.r, tab.color.g, tab.color.b, tab.color.a)
 	elseif tab.color ~= nil then
 		tab.color.r = tab.color.r or 1
@@ -127,7 +138,6 @@ function D4CENTABCTexture(frame, tab)
 		tab.w = tab.w or frame:GetWidth()
 		tab.h = tab.h or frame:GetHeight()
 		texture:SetSize(tab.w, tab.h)
-
 		tab.x = tab.x or 0
 		tab.y = tab.y or 0
 		texture:SetPoint(tab.align or "TOPLEFT", frame, tab.x, tab.y)
@@ -151,10 +161,8 @@ function D4CENTABcreateF(tab)
 	frame:SetHeight(tab.h)
 	frame:ClearAllPoints()
 	frame:SetPoint(tab.align, tab.parent, tab.align, tab.x, tab.y)
-
 	tab.layer = tab.layer or "BACKGROUND"
 	frame.texture = D4CENTABCTexture(frame, tab)
-
 	tab.textlayer = tab.textlayer or "ARTWORK"
 	frame.text = frame:CreateFontString(nil, tab.textlayer)
 	if tab.framestrata ~= nil then
@@ -162,10 +170,10 @@ function D4CENTABcreateF(tab)
 	else
 		frame:SetFrameStrata("HIGH")
 	end
+
 	frame.text:SetFont(STANDARD_TEXT_FONT, tab.textsize, "OUTLINE")
 	frame.text:SetPoint(tab.textalign, 0, 0)
 	frame.text:SetText(tab.text)
-
 	function frame:SetText(text)
 		frame.text:SetText(text)
 	end
@@ -197,7 +205,6 @@ function D4CENTABCreateBar(tab)
 	tab.oldname = tab.name or ""
 	tab.name = tab.oldname .. "Background"
 	bar.background = D4CENTABcreateF(tab)
-
 	tab.parent = bar.background
 	tab.barcolor = tab.barcolor or {}
 	tab.barcolor.r = tab.barcolor.r or 0.3
@@ -212,7 +219,6 @@ function D4CENTABCreateBar(tab)
 	tab.name = tab.oldname .. "Bar"
 	bar.bar = D4CENTABcreateF(tab)
 	tab.autoresize = false
-
 	tab.align = "CENTER"
 	tab.texture = ""
 	tab.color.a = 0
@@ -253,6 +259,7 @@ function D4CENTABCreateBar(tab)
 	function bar:Hide()
 		bar.background:Hide()
 	end
+
 	function bar:Show()
 		bar.background:Show()
 	end
@@ -264,13 +271,13 @@ function D4CENTABCreateBar(tab)
 	function bar:SetHeight(h)
 		bar.background:SetHeight(h)
 		bar.bar:SetHeight(h)
-
 		bar.overlay:SetHeight(h)
 		bar.overlay.l:SetHeight(h)
 		bar.overlay.r:SetHeight(h)
 		for i = 1, amount - 1 do
 			bar.overlay[i]:SetHeight(h)
 		end
+
 		bar.overlay.text:SetFont(STANDARD_TEXT_FONT, tonumber(string.format("%.0f", h * 0.69)), "OUTLINE")
 		--bar.overlay.text:SetTextHeight(tonumber(string.format("%.0f", h * 0.69)))
 	end
@@ -282,7 +289,6 @@ function D4CENTABCreateBar(tab)
 	function bar:SetWidth(w)
 		w = mathR(w, 0)
 		bar.background:SetWidth(w)
-
 		bar.overlay:SetWidth(w)
 		bar.overlay.t:SetWidth(w)
 		bar.overlay.b:SetWidth(w)
@@ -293,8 +299,19 @@ function D4CENTABCreateBar(tab)
 	end
 
 	bar.overlay:EnableMouse()
-	bar.overlay:SetScript("OnEnter", function() bar.overlay.text:Hide() end)
-	bar.overlay:SetScript("OnLeave", function() bar.overlay.text:Show() end)
+	bar.overlay:SetScript(
+		"OnEnter",
+		function()
+			bar.overlay.text:Hide()
+		end
+	)
+
+	bar.overlay:SetScript(
+		"OnLeave",
+		function()
+			bar.overlay.text:Show()
+		end
+	)
 
 	return bar
 end
