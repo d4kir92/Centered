@@ -62,7 +62,6 @@ function Centered:InitSettings()
 	D4CENTABCreateText(settings_header2)
 	Y = Y - H
 	Y = Y - BR
-	InterfaceOptions_AddCategory(D4CENTAB_Settings.panel)
 	local settings_playergap2 = {}
 	settings_playergap2.name = "playergap"
 	settings_playergap2.parent = D4CENTAB_Settings.panel
@@ -76,6 +75,7 @@ function Centered:InitSettings()
 	settings_playergap2.func = Centered.Update
 	settings_playergap2.dbvalue = "playergap"
 	D4CENTABCreateSlider(settings_playergap2)
+	InterfaceOptions_AddCategory(D4CENTAB_Settings.panel)
 end
 
 local loaded = false
