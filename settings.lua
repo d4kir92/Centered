@@ -75,7 +75,11 @@ function Centered:InitSettings()
 	settings_playergap2.func = Centered.Update
 	settings_playergap2.dbvalue = "playergap"
 	D4CENTABCreateSlider(settings_playergap2)
-	InterfaceOptions_AddCategory(D4CENTAB_Settings.panel)
+	if InterfaceOptions_AddCategory then
+		InterfaceOptions_AddCategory(D4CENTAB_Settings.panel)
+	else
+		print("[Centered] Missing InterfaceOptions_AddCategory")
+	end
 end
 
 local loaded = false
