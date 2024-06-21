@@ -28,10 +28,8 @@ end
 function D4CENTABUpdateLanguage()
 	D4CENTAB.Lang_enUS()
 	if GetLocale() == "enUS" then
-		--D4CENTABmsg("Translation found! [enUS (English)]")
 		D4CENTAB.Lang_enUS()
 	elseif GetLocale() == "deDE" then
-		--D4CENTABmsg("Translation found! [deDE (Deutsch)]")
 		D4CENTAB.Lang_deDE()
 	elseif GetLocale() == "frFR" then
 		D4CENTAB.Lang_frFR()
