@@ -66,8 +66,29 @@ function D4CENTABCreateSlider(tab)
 	tab.x = tab.x or 0
 	tab.y = tab.y or 0
 	tab.value = tab.value or 0
-	local SL = CreateFrame("Slider", tab.name, tab.parent, "OptionsSliderTemplate")
+	local SL = CreateFrame("Slider", tab.name, tab.parent, "UISliderTemplate")
 	SL:SetPoint("TOPLEFT", tab.x, tab.y)
+	if SL.Low == nil then
+		SL.Low = SL:CreateFontString(nil, nil, "GameFontNormal")
+		SL.Low:SetPoint("BOTTOMLEFT", SL, "BOTTOMLEFT", 0, -12)
+		SL.Low:SetFont(STANDARD_TEXT_FONT, 10, "THINOUTLINE")
+		SL.Low:SetTextColor(1, 1, 1)
+	end
+
+	if SL.High == nil then
+		SL.High = SL:CreateFontString(nil, nil, "GameFontNormal")
+		SL.High:SetPoint("BOTTOMRIGHT", SL, "BOTTOMRIGHT", 0, -12)
+		SL.High:SetFont(STANDARD_TEXT_FONT, 10, "THINOUTLINE")
+		SL.High:SetTextColor(1, 1, 1)
+	end
+
+	if SL.Text == nil then
+		SL.Text = SL:CreateFontString(nil, nil, "GameFontNormal")
+		SL.Text:SetPoint("TOP", SL, "TOP", 0, 16)
+		SL.Text:SetFont(STANDARD_TEXT_FONT, 12, "THINOUTLINE")
+		SL.Text:SetTextColor(1, 1, 1)
+	end
+
 	SL.Low:SetText(tab.min)
 	SL.High:SetText(tab.max)
 	local trans = {}
@@ -75,7 +96,7 @@ function D4CENTABCreateSlider(tab)
 	SL.Text:SetText(D4CENTABGT(tab.text, trans))
 	SL:SetMinMaxValues(tab.min, tab.max)
 	SL:SetValue(tab.value)
-	SL:SetWidth(600)
+	SL:SetSize(600, 16)
 	SL:SetObeyStepOnDrag(tab.steps)
 	tab.steps = tab.steps or 1
 	SL:SetValueStep(tab.steps)
