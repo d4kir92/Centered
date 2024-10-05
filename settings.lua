@@ -78,7 +78,8 @@ function Centered:InitSettings()
 	if InterfaceOptions_AddCategory then
 		InterfaceOptions_AddCategory(D4CENTAB_Settings.panel)
 	else
-		print("[Centered] Missing InterfaceOptions_AddCategory")
+		local category, _ = _G.Settings.RegisterCanvasLayoutCategory(D4CENTAB_Settings.panel, "Centered")
+		_G.Settings.RegisterAddOnCategory(category)
 	end
 end
 
