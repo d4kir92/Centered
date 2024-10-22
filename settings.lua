@@ -1,10 +1,11 @@
-local _, Centered = ...
+local AddonName, Centered = ...
 -- By D4KiR
 if D4CENTAB == nil then
 	D4CENTAB = {}
 end
 
 function Centered:InitSettings()
+	Centered:SetVersion(AddonName, 132222, "1.1.11")
 	D4CENTAB_Settings = {}
 	local settingname = D4CENTAB.name
 	D4CENTAB_Settings.panel = CreateFrame("Frame", settingname, UIParent)
