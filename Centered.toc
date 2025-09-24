@@ -2,10 +2,10 @@
 ## Interface-BCC: 20504
 ## Interface-Wrath: 30300, 30403
 ## Interface-Cata: 40402
-## Interface-Mists: 50500
+## Interface-Mists: 50501
 ## Interface: 110200
 
-## Version: 1.1.24
+## Version: 1.1.25
 ## Title: C|cff3FC7EBentered|r |T132222:16:16:0:0|t by |cff3FC7EBD4KiR |T132115:16:16:0:0|t
 ## Notes: Centers Some Elements
 ## Author: D|cff3FC7EB4KiR |T132115:16:16:0:0|t
