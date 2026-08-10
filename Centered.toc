@@ -1,13 +1,23 @@
 ## Interface-Classic: 11509
 ## Interface-BCC: 20506
-## Interface-Wrath: 30300, 30403
+## Interface-Wrath: 30403
 ## Interface-Cata: 40402
 ## Interface-Mists: 50504
 ## Interface: 120100, 120007
 
-## Version: 1.1.38
+## Version: 1.1.39
 ## Title: Centered by |cff55d2ffD4KiR |T132115:16:16:0:0|t
-## Notes: Centers Some Elements
+## Notes: Centers Ui Elements
+## Notes-deDE: Zentriert Ui Elemente
+## Notes-esES: Centra los elementos de la interfaz
+## Notes-esMX: Centra los elementos de la interfaz
+## Notes-frFR: Centre les éléments de l'interface
+## Notes-itIT: Centra gli elementi dell'interfaccia
+## Notes-koKR: UI 요소를 중앙에 배치합니다
+## Notes-ptBR: Centraliza os elementos da interface
+## Notes-ruRU: Центрирует элементы интерфейса
+## Notes-zhCN: 居中显示界面元素
+## Notes-zhTW: 置中顯示介面元素
 ## Author: D4KiR |T132115:16:16:0:0|t
 ## Category: Unit Frames
 ## Category-deDE: Einheitenfenster
