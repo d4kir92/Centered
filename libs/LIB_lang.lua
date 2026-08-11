@@ -35,6 +35,20 @@ function D4CENTABUpdateLanguage()
 		D4CENTAB.Lang_frFR()
 	elseif GetLocale() == "ruRU" then
 		D4CENTAB.Lang_ruRU()
+	elseif GetLocale() == "esES" then
+		D4CENTAB.Lang_esES()
+	elseif GetLocale() == "esMX" then
+		D4CENTAB.Lang_esMX()
+	elseif GetLocale() == "itIT" then
+		D4CENTAB.Lang_itIT()
+	elseif GetLocale() == "koKR" then
+		D4CENTAB.Lang_koKR()
+	elseif GetLocale() == "ptBR" then
+		D4CENTAB.Lang_ptBR()
+	elseif GetLocale() == "zhCN" then
+		D4CENTAB.Lang_zhCN()
+	elseif GetLocale() == "zhTW" then
+		D4CENTAB.Lang_zhTW()
 	end
 end
 

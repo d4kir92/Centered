@@ -1,5 +1,5 @@
 local _, Centered = ...
--- enUS English
+-- ruRU Russian Русский
 lang = lang or {}
 function D4CENTAB.Lang_ruRU()
 	lang.playergap = "Зазор между рамками персонажей: VALUE"
