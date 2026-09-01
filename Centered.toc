@@ -37,14 +37,14 @@
 ## X-Wago-ID: 25NRrvN3
 ## IconTexture: 132222
 
+libs\D4Lib\D4Lib.xml
+
 config.lua
 
-libs\LIB_output.lua
 libs\LIB_math.lua
-libs\LIB_design.lua
 
-locale\deDE.lua
 locale\enUS.lua
+locale\deDE.lua
 locale\esES.lua
 locale\esMX.lua
 locale\frFR.lua
@@ -54,7 +54,6 @@ locale\ptBR.lua
 locale\ruRU.lua
 locale\zhCN.lua
 locale\zhTW.lua
-libs\LIB_lang.lua
 
 settings.lua
 

@@ -1,110 +1,118 @@
-local _, Centered = ...
 -- By D4KiR
-if D4CENTAB == nil then
-	D4CENTAB = {}
+local _, Centered = ...
+local censet = nil
+local DEFAULT_WIDTH = 460
+local DEFAULT_HEIGHT = 400
+function Centered:ToggleSettings()
+	if censet == nil then return end
+	censet:Toggle()
+end
+
+local function GetCollapsed(key)
+	if key == nil then return nil end
+	if type(D4CEN) ~= "table" then return nil end
+	if type(D4CEN["COLLAPSED"]) ~= "table" then return nil end
+
+	return D4CEN["COLLAPSED"][key]
+end
+
+local function SetCollapsed(key, collapsed)
+	if key == nil then return end
+	if type(D4CEN) ~= "table" then return end
+	if type(D4CEN["COLLAPSED"]) ~= "table" then D4CEN["COLLAPSED"] = {} end
+	if collapsed then
+		D4CEN["COLLAPSED"][key] = true
+	else
+		D4CEN["COLLAPSED"][key] = nil
+	end
+end
+
+local function AddCategory(key, level)
+	censet:AddCategory({
+		["label"] = "LID_" .. key,
+		["key"] = key,
+		["search"] = key,
+		["level"] = level
+	})
+end
+
+local function AddCheckbox(key, dbkey, default, func)
+	censet:AddCheckbox({
+		["label"] = "LID_" .. key,
+		["search"] = key,
+		["value"] = Centered:GV(D4CEN, dbkey, default),
+		["func"] = function(value)
+			Centered:SV(D4CEN, dbkey, value)
+			if func then func(value) end
+		end
+	})
+end
+
+local function AddSlider(key, dbkey, default, vmin, vmax, step, decimals, func)
+	censet:AddSlider({
+		["label"] = "LID_" .. key,
+		["search"] = key,
+		["value"] = D4CENGetConfig(dbkey, default),
+		["min"] = vmin,
+		["max"] = vmax,
+		["step"] = step,
+		["decimals"] = decimals,
+		["func"] = function(value)
+			Centered:SV(D4CEN, dbkey, value)
+			if func then func(value) end
+		end
+	})
 end
 
 function Centered:InitSettings()
-	D4CENTAB_Settings = {}
-	local settingname = D4CENTAB.name
-	D4CENTAB_Settings.panel = CreateFrame("Frame", settingname, UIParent)
-	D4CENTAB_Settings.panel.name = settingname
-	local Y = -14
-	local H = 16
-	local BR = 30
-	local settings_header = {}
-	settings_header.frame = D4CENTAB_Settings.panel
-	settings_header.parent = D4CENTAB_Settings.panel
-	settings_header.x = 10
-	settings_header.y = Y
-	settings_header.text = settingname
-	settings_header.textsize = 24
-	D4CENTABCreateText(settings_header)
-	Y = Y - BR
-	Y = Y - BR
-	local settings_playergap = {}
-	settings_playergap.name = "playergap"
-	settings_playergap.parent = D4CENTAB_Settings.panel
-	settings_playergap.value = D4CENGetConfig("playergap", -8)
-	settings_playergap.text = "playergap"
-	settings_playergap.x = 10
-	settings_playergap.y = Y
-	settings_playergap.min = -480
-	settings_playergap.max = 50
-	settings_playergap.steps = 1
-	settings_playergap.func = Centered.Update
-	settings_playergap.dbvalue = "playergap"
-	D4CENTABCreateSlider(settings_playergap)
-	Y = Y - H
-	Y = Y - BR
-	local settings_playerheight = {}
-	settings_playerheight.name = "playerheight"
-	settings_playerheight.parent = D4CENTAB_Settings.panel
-	settings_playerheight.value = D4CENGetConfig("playerheight", 278)
-	settings_playerheight.text = "playerheight"
-	settings_playerheight.x = 10
-	settings_playerheight.y = Y
-	settings_playerheight.min = -450
-	settings_playerheight.max = 440
-	settings_playerheight.steps = 1
-	settings_playerheight.func = Centered.Update
-	settings_playerheight.dbvalue = "playerheight"
-	D4CENTABCreateSlider(settings_playerheight)
-	Y = Y - H
-	Y = Y - BR
-	local settings_header2 = {}
-	settings_header2.frame = D4CENTAB_Settings.panel
-	settings_header2.parent = D4CENTAB_Settings.panel
-	settings_header2.x = 10
-	settings_header2.y = Y
-	settings_header2.text = "OLD Wide Settings"
-	settings_header2.textsize = 24
-	D4CENTABCreateText(settings_header2)
-	Y = Y - H
-	Y = Y - BR
-	local settings_playergap2 = {}
-	settings_playergap2.name = "playergap"
-	settings_playergap2.parent = D4CENTAB_Settings.panel
-	settings_playergap2.value = D4CENGetConfig("playergap", -8)
-	settings_playergap2.text = "playergap"
-	settings_playergap2.x = 10
-	settings_playergap2.y = Y
-	settings_playergap2.min = -2280
-	settings_playergap2.max = 1850
-	settings_playergap2.steps = 1
-	settings_playergap2.func = Centered.Update
-	settings_playergap2.dbvalue = "playergap"
-	D4CENTABCreateSlider(settings_playergap2)
-	if InterfaceOptions_AddCategory then
-		InterfaceOptions_AddCategory(D4CENTAB_Settings.panel)
-	else
-		local category, _ = _G.Settings.RegisterCanvasLayoutCategory(D4CENTAB_Settings.panel, "Centered")
-		_G.Settings.RegisterAddOnCategory(category)
-	end
+	D4CEN = D4CEN or {}
+	Centered:SetVersion(132222, "1.1.40")
+	Centered:AddSlash("cen", Centered.ToggleSettings)
+	Centered:AddSlash("centered", Centered.ToggleSettings)
+	censet = Centered:CreateUIWindow({
+		["name"] = "CenteredSettings",
+		["pTab"] = {"CENTER"},
+		["width"] = Centered:GV(D4CEN, "WINDOWWIDTH", DEFAULT_WIDTH),
+		["height"] = Centered:GV(D4CEN, "WINDOWHEIGHT", DEFAULT_HEIGHT),
+		["minWidth"] = 360,
+		["minHeight"] = 240,
+		["onResize"] = function(width, height)
+			Centered:SV(D4CEN, "WINDOWWIDTH", width)
+			Centered:SV(D4CEN, "WINDOWHEIGHT", height)
+		end,
+		["getCollapsed"] = function(key) return GetCollapsed(key) end,
+		["setCollapsed"] = function(key, collapsed) SetCollapsed(key, collapsed) end,
+		["title"] = format("|T132222:16:16:0:0|t Centered v%s", Centered:GetVersion())
+	})
+
+	censet:SuspendLayout()
+	censet:AddSearch()
+	AddCategory("GENERAL")
+	AddCheckbox("MMBTN", "MMBTN", Centered:GetWoWBuild() ~= "RETAIL", function(value)
+		if value then
+			Centered:ShowMMBtn("Centered")
+		else
+			Centered:HideMMBtn("Centered")
+		end
+	end)
+
+	AddCategory("UNITFRAMES")
+	AddSlider("PLAYERGAP", "playergap", -8, -480, 50, 1, 0, function() Centered:Update() end)
+	AddSlider("PLAYERHEIGHT", "playerheight", 278, -450, 440, 1, 0, function() Centered:Update() end)
+	AddCategory("WIDESCREEN")
+	AddSlider("PLAYERGAPWIDE", "playergap", -8, -2280, 1850, 1, 0, function() Centered:Update() end)
+	censet:ResumeLayout()
+	Centered:CreateMinimapButton({
+		["name"] = "Centered",
+		["icon"] = 132222,
+		["dbtab"] = D4CEN,
+		["vTT"] = {{"|T132222:16:16:0:0|t Centered", "v" .. Centered:GetVersion()}, {Centered:Trans("LID_LEFTCLICK"), Centered:Trans("LID_OPENSETTINGS")}, {Centered:Trans("LID_SHIFTRIGHTCLICK"), Centered:Trans("LID_HIDEMINIMAPBUTTON")}},
+		["funcL"] = function() Centered:ToggleSettings() end,
+		["funcSR"] = function()
+			Centered:SV(D4CEN, "MMBTN", false)
+			Centered:MSG("Minimap Button is now hidden.")
+			Centered:HideMMBtn("Centered")
+		end,
+		["dbkey"] = "MMBTN"
+	})
 end
-
-local loaded = false
-local vars = false
-local addo = false
-local frame = CreateFrame("FRAME")
-frame:RegisterEvent("ADDON_LOADED")
-frame:RegisterEvent("VARIABLES_LOADED")
-frame:RegisterEvent("PLAYER_ENTERING_WORLD")
-function frame:OnEvent(event)
-	if event == "VARIABLES_LOADED" then
-		vars = true
-	end
-
-	if event == "ADDON_LOADED" then
-		addo = true
-	end
-
-	if vars and addo and not loaded then
-		loaded = true
-		SetCVar("ScriptErrors", 1)
-		Centered:InitSettings()
-		Centered:Setup()
-	end
-end
-
-frame:SetScript("OnEvent", frame.OnEvent)

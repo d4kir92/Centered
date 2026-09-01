@@ -1,10 +1,5 @@
 local _, Centered = ...
 -- By D4KiR
-if D4CENTAB == nil then
-	D4CENTAB = {}
-end
-
-D4CENTAB.name = "Centered |T132222:16:16:0:0|t by |cff55d2ffD4KiR |T132115:16:16:0:0|t"
 function D4CENGetConfig(str, val)
 	local setting = val
 	D4CEN = D4CEN or {}

@@ -1,8 +1,9 @@
-local _, Centered = ...
 -- ruRU Russian Русский
-lang = lang or {}
-function D4CENTAB.Lang_ruRU()
-	lang.playergap = "Зазор между рамками персонажей: VALUE"
-	lang.playerheight = "Высота рамки персонажа: VALUE"
-	lang.unitframes = "Рамка Персонажа"
-end
+local _, Centered = ...
+Centered:AddTrans("ruRU", "LID_GENERAL", "Общее")
+Centered:AddTrans("ruRU", "LID_MMBTN", "Показывать кнопку на миникарте")
+Centered:AddTrans("ruRU", "LID_UNITFRAMES", "Рамка Персонажа")
+Centered:AddTrans("ruRU", "LID_PLAYERGAP", "Зазор между рамками персонажей")
+Centered:AddTrans("ruRU", "LID_PLAYERHEIGHT", "Высота рамки персонажа")
+Centered:AddTrans("ruRU", "LID_WIDESCREEN", "Широкий экран")
+Centered:AddTrans("ruRU", "LID_PLAYERGAPWIDE", "Зазор между рамками персонажей (широкий экран)")

@@ -1,8 +1,9 @@
-local _, Centered = ...
 -- itIT Italian Italiano
-lang = lang or {}
-function D4CENTAB.Lang_itIT()
-	lang.playergap = "Spazio riquadro giocatore: VALUE"
-	lang.playerheight = "Altezza riquadro giocatore: VALUE"
-	lang.unitframes = "Riquadri delle unità"
-end
+local _, Centered = ...
+Centered:AddTrans("itIT", "LID_GENERAL", "Generale")
+Centered:AddTrans("itIT", "LID_MMBTN", "Mostra pulsante mappa mondo")
+Centered:AddTrans("itIT", "LID_UNITFRAMES", "Riquadri delle unità")
+Centered:AddTrans("itIT", "LID_PLAYERGAP", "Spazio riquadro giocatore")
+Centered:AddTrans("itIT", "LID_PLAYERHEIGHT", "Altezza riquadro giocatore")
+Centered:AddTrans("itIT", "LID_WIDESCREEN", "Schermo panoramico")
+Centered:AddTrans("itIT", "LID_PLAYERGAPWIDE", "Spazio riquadro giocatore (panoramico)")

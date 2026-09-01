@@ -9,10 +9,6 @@ elseif select(4, GetBuildInfo()) > 19999 then
 	CENBUILD = "TBC"
 end
 
-if D4CENTAB == nil then
-	D4CENTAB = {}
-end
-
 function InVehicle()
 	if CENBUILD ~= "RETAIL" then
 		return false
@@ -72,3 +68,15 @@ function Centered:Setup()
 
 	Centered:Update()
 end
+
+local cef = CreateFrame("Frame")
+Centered:RegisterEvent(cef, "PLAYER_LOGIN")
+Centered:OnEvent(cef, function()
+	Centered:UnregisterEvent(cef, "PLAYER_LOGIN")
+	Centered:SetAddonOutput("Centered", 132222)
+	D4CEN = D4CEN or {}
+	Centered:SetDbTab(D4CEN)
+	SetCVar("ScriptErrors", 1)
+	Centered:InitSettings()
+	Centered:Setup()
+end, "Centered")

@@ -1,8 +1,9 @@
-local _, Centered = ...
 -- esMX Spanish (Mexico) Español
-lang = lang or {}
-function D4CENTAB.Lang_esMX()
-	lang.playergap = "Espacio del marco del jugador: VALUE"
-	lang.playerheight = "Altura del marco del jugador: VALUE"
-	lang.unitframes = "Marcos de unidades"
-end
+local _, Centered = ...
+Centered:AddTrans("esMX", "LID_GENERAL", "General")
+Centered:AddTrans("esMX", "LID_MMBTN", "Mostrar botón del minimapa")
+Centered:AddTrans("esMX", "LID_UNITFRAMES", "Marcos de unidades")
+Centered:AddTrans("esMX", "LID_PLAYERGAP", "Espacio del marco del jugador")
+Centered:AddTrans("esMX", "LID_PLAYERHEIGHT", "Altura del marco del jugador")
+Centered:AddTrans("esMX", "LID_WIDESCREEN", "Pantalla panorámica")
+Centered:AddTrans("esMX", "LID_PLAYERGAPWIDE", "Espacio del marco del jugador (panorámica)")
