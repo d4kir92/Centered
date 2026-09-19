@@ -12,7 +12,6 @@ local function GetCollapsed(key)
 	if key == nil then return nil end
 	if type(D4CEN) ~= "table" then return nil end
 	if type(D4CEN["COLLAPSED"]) ~= "table" then return nil end
-
 	return D4CEN["COLLAPSED"][key]
 end
 
@@ -66,7 +65,7 @@ end
 
 function Centered:InitSettings()
 	D4CEN = D4CEN or {}
-	Centered:SetVersion(132222, "1.1.40")
+	Centered:SetVersion(132222, "1.1.41")
 	Centered:AddSlash("cen", Centered.ToggleSettings)
 	Centered:AddSlash("centered", Centered.ToggleSettings)
 	censet = Centered:CreateUIWindow({
