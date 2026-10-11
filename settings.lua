@@ -65,7 +65,7 @@ end
 
 function Centered:InitSettings()
 	D4CEN = D4CEN or {}
-	Centered:SetVersion(132222, "1.1.41")
+	Centered:SetVersion(132222, "1.1.42")
 	Centered:AddSlash("cen", Centered.ToggleSettings)
 	Centered:AddSlash("centered", Centered.ToggleSettings)
 	censet = Centered:CreateUIWindow({
