@@ -65,7 +65,7 @@ end
 
 function Centered:InitSettings()
 	D4CEN = D4CEN or {}
-	Centered:SetVersion(132222, "1.1.43")
+	Centered:SetVersion()
 	Centered:AddSlash("cen", Centered.ToggleSettings)
 	Centered:AddSlash("centered", Centered.ToggleSettings)
 	censet = Centered:CreateUIWindow({
@@ -81,7 +81,7 @@ function Centered:InitSettings()
 		end,
 		["getCollapsed"] = function(key) return GetCollapsed(key) end,
 		["setCollapsed"] = function(key, collapsed) SetCollapsed(key, collapsed) end,
-		["title"] = format("|T132222:16:16:0:0|t Centered v%s", Centered:GetVersion())
+		["title"] = format("|T%s:16:16:0:0|t Centered v%s", Centered:GetAddonIcon(), Centered:GetVersion())
 	})
 
 	censet:SuspendLayout()
@@ -103,9 +103,9 @@ function Centered:InitSettings()
 	censet:ResumeLayout()
 	Centered:CreateMinimapButton({
 		["name"] = "Centered",
-		["icon"] = 132222,
+		["icon"] = Centered:GetAddonIcon(),
 		["dbtab"] = D4CEN,
-		["vTT"] = {{"|T132222:16:16:0:0|t Centered", "v" .. Centered:GetVersion()}, {Centered:Trans("LID_LEFTCLICK"), Centered:Trans("LID_OPENSETTINGS")}, {Centered:Trans("LID_SHIFTRIGHTCLICK"), Centered:Trans("LID_HIDEMINIMAPBUTTON")}},
+		["vTT"] = {{format("|T%s:16:16:0:0|t Centered", Centered:GetAddonIcon()),"v" .. Centered:GetVersion()}, {Centered:Trans("LID_LEFTCLICK"), Centered:Trans("LID_OPENSETTINGS")}, {Centered:Trans("LID_SHIFTRIGHTCLICK"), Centered:Trans("LID_HIDEMINIMAPBUTTON")}},
 		["funcL"] = function() Centered:ToggleSettings() end,
 		["funcSR"] = function()
 			Centered:SV(D4CEN, "MMBTN", false)

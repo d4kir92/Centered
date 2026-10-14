@@ -73,7 +73,7 @@ local cef = CreateFrame("Frame")
 Centered:RegisterEvent(cef, "PLAYER_LOGIN")
 Centered:OnEvent(cef, function()
 	Centered:UnregisterEvent(cef, "PLAYER_LOGIN")
-	Centered:SetAddonOutput("Centered", 132222)
+	Centered:SetAddonOutput()
 	D4CEN = D4CEN or {}
 	Centered:SetDbTab(D4CEN)
 	SetCVar("ScriptErrors", 1)
